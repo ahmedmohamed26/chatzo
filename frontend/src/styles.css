@@ -152,6 +152,77 @@ body {
   border: 1px solid hsl(var(--border));
 }
 
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody > tr > td,
+.p-datatable .p-datatable-footer {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  background: hsl(var(--card));
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: hsl(var(--muted));
+}
+
+.p-paginator {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.p-paginator .p-paginator-page,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-prev {
+  color: hsl(var(--muted-foreground));
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* Reusable page primitives for future pages */
+.app-page {
+  padding: 24px;
+  color: hsl(var(--foreground));
+}
+
+.app-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 16px;
+}
+
+.app-page-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.app-page-subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+}
+
+.app-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  padding: 14px;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 260px 1fr;

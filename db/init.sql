@@ -29,12 +29,16 @@ create table if not exists users (
   email varchar(255) not null,
   password_hash varchar(255) not null,
   full_name varchar(255) not null,
+  position varchar(120),
   preferred_language varchar(10) not null default 'en',
   status varchar(30) not null default 'active',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (tenant_id, email)
 );
+
+alter table users
+  add column if not exists position varchar(120);
 
 create table if not exists plans (
   id serial primary key,

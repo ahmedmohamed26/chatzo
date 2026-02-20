@@ -55,6 +55,9 @@ export class SignInComponent {
         localStorage.setItem('refresh_token', res.data.refresh_token);
         localStorage.setItem('tenant_id', res.data.user.tenant_id);
         localStorage.setItem('user_id', res.data.user.id);
+        localStorage.setItem('full_name', res.data.user.full_name);
+        localStorage.setItem('position', res.data.user.position || '');
+        localStorage.setItem('role', res.data.user.role || '');
         localStorage.setItem('preferred_language', res.data.user.preferred_language || 'en');
         this.toastr.success(this.i18n.dict()[this.i18n.language].signin_success);
         const redirect = this.route.snapshot.queryParamMap.get('redirect');

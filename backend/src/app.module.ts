@@ -9,6 +9,7 @@ import { ConversationsModule } from './modules/conversations/conversations.modul
 import { QuickRepliesModule } from './modules/quick-replies/quick-replies.module';
 import { ChannelsModule } from './modules/channels/channels.module';
 import { WebhooksModule } from './modules/webhooks/webhooks.module';
+import { TeamModule } from './modules/team/team.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { WebhooksModule } from './modules/webhooks/webhooks.module';
     ConversationsModule,
     QuickRepliesModule,
     ChannelsModule,
+    TeamModule,
     WebhooksModule,
   ],
 })

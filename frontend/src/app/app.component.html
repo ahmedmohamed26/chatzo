@@ -32,10 +32,10 @@
           <span class="notify-dot"></span>
         </button>
         <button pButton type="button" class="p-button-text user-btn" (click)="userMenu.toggle($event)">
-          <p-avatar label="AM" shape="circle"></p-avatar>
+          <p-avatar [label]="currentUser.initials" shape="circle"></p-avatar>
           <span class="user-meta">
-            <strong>Ahmed Mohamed</strong>
-            <small>Company Admin</small>
+            <strong>{{ currentUser.fullName }}</strong>
+            <small>{{ userSubtitle }}</small>
           </span>
           <i class="pi pi-angle-down"></i>
         </button>

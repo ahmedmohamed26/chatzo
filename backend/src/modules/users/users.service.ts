@@ -13,6 +13,7 @@ type UserRow = {
   id: string;
   email: string;
   full_name: string;
+  position: string | null;
   preferred_language: string;
   tenant_id: string;
   role: string;
@@ -38,7 +39,7 @@ export class UsersService implements OnModuleDestroy {
     const id = this.validateUserId(userId);
     const res = await this.pool.query<UserRow>(
       `
-      SELECT u.id, u.email, u.full_name, u.preferred_language, u.tenant_id, r.code AS role
+      SELECT u.id, u.email, u.full_name, u.position, u.preferred_language, u.tenant_id, r.code AS role
       FROM users u
       JOIN roles r ON r.id = u.role_id
       WHERE u.id = $1
@@ -56,10 +57,11 @@ export class UsersService implements OnModuleDestroy {
     const id = this.validateUserId(userId);
     const res = await this.pool.query<UserRow>(
       `
-      UPDATE users
+      UPDATE users u
       SET preferred_language = $2
-      WHERE id = $1
-      RETURNING id, email, full_name, preferred_language, tenant_id
+      FROM roles r
+      WHERE u.id = $1 AND r.id = u.role_id
+      RETURNING u.id, u.email, u.full_name, u.position, u.preferred_language, u.tenant_id, r.code AS role
       `,
       [id, payload.preferred_language],
     );

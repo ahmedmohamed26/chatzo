@@ -28,6 +28,7 @@ type LoginResponseData = {
     id: string;
     email: string;
     full_name: string;
+    position: string;
     preferred_language: string;
     tenant_id: string;
     role: string;

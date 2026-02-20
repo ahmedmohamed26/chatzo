@@ -12,6 +12,7 @@ type UserProfile = {
   id: string;
   email: string;
   full_name: string;
+  position: string;
   preferred_language: 'en' | 'ar';
   tenant_id: string;
   role: string;

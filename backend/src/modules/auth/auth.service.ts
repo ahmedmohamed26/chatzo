@@ -16,6 +16,7 @@ type DbUser = {
   email: string;
   password_hash: string;
   full_name: string;
+  position: string | null;
   preferred_language: string;
   tenant_id: string;
   role: string;
@@ -132,6 +133,7 @@ export class AuthService implements OnModuleDestroy {
           id: user.id,
           email: user.email,
           full_name: user.full_name,
+          position: user.position ?? '',
           preferred_language: user.preferred_language,
           tenant_id: user.tenant_id,
           role: user.role,
@@ -148,6 +150,7 @@ export class AuthService implements OnModuleDestroy {
         u.email,
         u.password_hash,
         u.full_name,
+        u.position,
         u.preferred_language,
         u.tenant_id,
         r.code AS role

@@ -1,4 +1,116 @@
-<section class="page-card">
-  <h1>Team</h1>
-  <p>Invite and manage your agents and admins.</p>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<section class="team-page app-page">
+  <header class="team-header app-page-header">
+    <div>
+      <h1 class="app-page-title">{{ i18n.dict()[i18n.language].team_title }}</h1>
+      <p class="app-page-subtitle">{{ i18n.dict()[i18n.language].team_subtitle }}</p>
+    </div>
+    <button *ngIf="canAddPerson" pButton type="button" icon="pi pi-plus" (click)="openCreate()">
+      {{ i18n.dict()[i18n.language].team_add }}
+    </button>
+  </header>
+
+  <section class="team-card app-section">
+    <div class="toolbar">
+      <span class="p-input-icon-left search-wrap">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          [(ngModel)]="filter"
+          [placeholder]="i18n.dict()[i18n.language].team_search"
+          class="search-input" />
+      </span>
+    </div>
+
+    <p-table [value]="filteredMembers" [loading]="loading" [tableStyle]="{ 'min-width': '100%' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{ i18n.dict()[i18n.language].team_col_name }}</th>
+          <th>{{ i18n.dict()[i18n.language].team_col_email }}</th>
+          <th>{{ i18n.dict()[i18n.language].team_col_role }}</th>
+          <th>{{ i18n.dict()[i18n.language].team_col_position }}</th>
+          <th>{{ i18n.dict()[i18n.language].team_col_actions }}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-row>
+        <tr>
+          <td>{{ row.fullName }}</td>
+          <td>{{ row.email }}</td>
+          <td>
+            <p-tag [value]="roleLabel(row.role)" [severity]="row.role === 'company_admin' ? 'warning' : 'info'"></p-tag>
+          </td>
+          <td>{{ row.position }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-text p-button-rounded" (click)="openEdit(row)"></button>
+            <button
+              *ngIf="row.role !== 'company_admin'"
+              pButton
+              type="button"
+              icon="pi pi-trash"
+              class="p-button-text p-button-rounded p-button-danger"
+              (click)="confirmDelete(row)"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5" class="empty">{{ i18n.dict()[i18n.language].team_empty }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </section>
 </section>
+
+<p-dialog
+  [(visible)]="dialogVisible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '520px' }"
+  [header]="isEditMode ? i18n.dict()[i18n.language].team_edit : i18n.dict()[i18n.language].team_add">
+  <form [formGroup]="form" class="team-form">
+    <label>{{ i18n.dict()[i18n.language].team_field_name }}</label>
+    <input pInputText formControlName="fullName" />
+
+    <label>{{ i18n.dict()[i18n.language].team_field_email }}</label>
+    <input pInputText formControlName="email" />
+
+    <label>{{ i18n.dict()[i18n.language].team_field_role }}</label>
+    <p-dropdown
+      [options]="translatedRoles"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="role"
+      [style]="{ width: '100%' }"
+      appendTo="body"></p-dropdown>
+
+    <label>{{ i18n.dict()[i18n.language].team_field_position }}</label>
+    <p-dropdown
+      [options]="translatedPositions"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="position"
+      [style]="{ width: '100%' }"
+      appendTo="body"></p-dropdown>
+
+    <label>
+      {{
+        isEditMode
+          ? i18n.dict()[i18n.language].team_field_password_optional
+          : i18n.dict()[i18n.language].team_field_password
+      }}
+    </label>
+    <p-password formControlName="password" [toggleMask]="true" [feedback]="false"></p-password>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" class="p-button-text" (click)="dialogVisible = false">
+      {{ i18n.dict()[i18n.language].team_cancel }}
+    </button>
+    <button pButton type="button" (click)="save()">
+      {{ i18n.dict()[i18n.language].team_save }}
+    </button>
+  </ng-template>
+</p-dialog>
