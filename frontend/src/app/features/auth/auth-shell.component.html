@@ -1,0 +1,30 @@
+<section class="auth-page">
+  <div class="auth-left">
+    <div class="brand-row">
+      <div class="brand-icon"><i class="pi pi-comments"></i></div>
+      <h2>{{ i18n.dict()[i18n.language].brand_name }}</h2>
+    </div>
+    <h1>{{ i18n.dict()[i18n.language].auth_hero_title }}</h1>
+    <p class="hero-copy">{{ i18n.dict()[i18n.language].auth_hero_subtitle }}</p>
+    <p class="auth-copy">{{ i18n.dict()[i18n.language].auth_copyright }}</p>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-card">
+      <div class="auth-lang-switch">
+        <button pButton type="button" class="p-button-text p-button-sm" (click)="setLanguage('en')">
+          {{ i18n.dict()[i18n.language].lang_en }}
+        </button>
+        <button pButton type="button" class="p-button-text p-button-sm" (click)="setLanguage('ar')">
+          {{ i18n.dict()[i18n.language].lang_ar }}
+        </button>
+      </div>
+
+      <h2>{{ title }}</h2>
+      <p class="sub">{{ subtitle }}</p>
+
+      <ng-content select="[auth-form]"></ng-content>
+      <ng-content select="[auth-footer]"></ng-content>
+    </div>
+  </div>
+</section>

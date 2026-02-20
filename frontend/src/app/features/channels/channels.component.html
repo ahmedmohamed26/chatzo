@@ -1,0 +1,98 @@
+<section class="channels-page">
+  <div class="page-header">
+    <div>
+      <h1>{{ i18n.dict()[i18n.language].channels_title }}</h1>
+      <p>{{ i18n.dict()[i18n.language].channels_subtitle }}</p>
+    </div>
+    <button
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      [iconPos]="i18n.language === 'ar' ? 'left' : 'right'"
+      class="add-channel-btn"
+      (click)="openWhatsappDialog()">
+      {{ i18n.dict()[i18n.language].channels_add }}
+    </button>
+  </div>
+
+  <div class="cards-grid">
+    <div
+      *ngFor="let card of cards"
+      class="channel-card"
+      (click)="card.connectable ? openWhatsappDialog() : null">
+      <div class="card-top">
+        <div class="icon-tile" [ngClass]="card.theme">
+          <i [class]="card.icon"></i>
+        </div>
+        <span class="accounts-pill">
+          {{ getCount(card.type) }} {{ i18n.dict()[i18n.language].channels_accounts }}
+        </span>
+      </div>
+      <div class="card-body">
+        <h3>{{ i18n.dict()[i18n.language][card.titleKey] }}</h3>
+        <p>{{ i18n.dict()[i18n.language][card.descKey] }}</p>
+      </div>
+      <div class="card-actions">
+        <button
+          pButton
+          type="button"
+          class="p-button-text connect-btn"
+          [disabled]="card.comingSoon"
+          [pTooltip]="card.comingSoon ? i18n.dict()[i18n.language].channels_coming_soon : null"
+          [tooltipDisabled]="!card.comingSoon"
+          (click)="card.connectable ? openWhatsappDialog() : null">
+          {{ i18n.dict()[i18n.language].channels_connect_action }}
+        </button>
+        <span *ngIf="card.comingSoon" class="coming-soon">
+          {{ i18n.dict()[i18n.language].channels_coming_soon }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <section class="connected-accounts">
+    <h2>{{ i18n.dict()[i18n.language].channels_connected_section }}</h2>
+
+    <div class="accounts-list" *ngIf="accounts.length > 0; else emptyState">
+      <div class="account-row" *ngFor="let account of accounts">
+        <div class="account-meta">
+          <div class="account-icon">
+            <i [class]="getChannelIcon(account.channelType)"></i>
+          </div>
+          <div>
+            <strong>{{ account.displayName }}</strong>
+            <small>{{ i18n.dict()[i18n.language].channels_external_id }}: {{ account.externalId }}</small>
+          </div>
+        </div>
+        <div class="account-actions">
+          <p-tag
+            [severity]="getStatusSeverity(account.status)"
+            [value]="
+              account.status === 'connected'
+                ? i18n.dict()[i18n.language].channels_status_connected
+                : i18n.dict()[i18n.language].channels_status_disconnected
+            "></p-tag>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-text p-button-rounded danger-icon"
+            (click)="confirmDelete(account)"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      {{ i18n.dict()[i18n.language].channels_empty }}
+    </div>
+  </ng-template>
+
+  <app-connect-whatsapp-dialog
+    [(visible)]="dialogVisible"
+    (connected)="onWhatsappConnected($event)"></app-connect-whatsapp-dialog>
+
+  <p-confirmDialog></p-confirmDialog>
+  <p-toast></p-toast>
+</section>

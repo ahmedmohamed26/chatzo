@@ -1,0 +1,26 @@
+<section class="dashboard">
+  <div class="welcome">
+    <h1>{{ i18n.dict()[i18n.language].dashboard_welcome }} <span>👋</span></h1>
+    <p>{{ i18n.dict()[i18n.language].dashboard_subtitle }}</p>
+  </div>
+
+  <div class="metric-grid">
+    <article class="metric-card" *ngFor="let metric of metrics">
+      <div class="metric-head">
+        <span>{{ i18n.dict()[i18n.language][metric.titleKey] }}</span>
+        <div class="metric-icon"><i [class]="metric.icon"></i></div>
+      </div>
+      <h2>{{ metric.value }}</h2>
+      <small>{{ i18n.dict()[i18n.language][metric.subtitleKey] }}</small>
+    </article>
+  </div>
+
+  <article class="recent-card">
+    <h3>{{ i18n.dict()[i18n.language].dashboard_recent }}</h3>
+    <div class="empty-state">
+      <i class="pi pi-comment"></i>
+      <h4>{{ i18n.dict()[i18n.language].dashboard_empty_title }}</h4>
+      <p>{{ i18n.dict()[i18n.language].dashboard_empty_desc }}</p>
+    </div>
+  </article>
+</section>

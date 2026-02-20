@@ -1,0 +1,50 @@
+<app-auth-shell
+  [title]="i18n.dict()[i18n.language].sign_up_title"
+  [subtitle]="i18n.dict()[i18n.language].sign_up_subtitle">
+  <form auth-form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="double-grid">
+          <div>
+            <label>{{ i18n.dict()[i18n.language].field_first_name }}</label>
+            <input pInputText class="auth-input" type="text" formControlName="first_name" [placeholder]="i18n.dict()[i18n.language].placeholder_first_name" />
+          </div>
+          <div>
+            <label>{{ i18n.dict()[i18n.language].field_last_name }}</label>
+            <input pInputText class="auth-input" type="text" formControlName="last_name" [placeholder]="i18n.dict()[i18n.language].placeholder_last_name" />
+          </div>
+        </div>
+
+        <label>{{ i18n.dict()[i18n.language].field_org_name }}</label>
+        <input pInputText class="auth-input" type="text" formControlName="organization_name" [placeholder]="i18n.dict()[i18n.language].placeholder_org_name" />
+
+        <label>{{ i18n.dict()[i18n.language].field_email }}</label>
+        <input pInputText class="auth-input" type="email" formControlName="email" [placeholder]="i18n.dict()[i18n.language].placeholder_email" />
+
+        <label>{{ i18n.dict()[i18n.language].field_password }}</label>
+        <p-password
+          formControlName="password"
+          [feedback]="false"
+          [toggleMask]="true"
+          [placeholder]="i18n.dict()[i18n.language].placeholder_password"
+          styleClass="auth-password"
+          inputStyleClass="auth-input">
+        </p-password>
+
+        <p class="form-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <button
+          pButton
+          class="auth-btn"
+          type="submit"
+          [disabled]="loading"
+          [loading]="loading"
+          icon="pi pi-user-plus"
+          iconPos="right">
+          {{ loading ? i18n.dict()[i18n.language].auth_loading : i18n.dict()[i18n.language].sign_up_cta }}
+        </button>
+  </form>
+
+  <p auth-footer class="switch-link">
+        {{ i18n.dict()[i18n.language].have_account }}
+        <a routerLink="/auth/sign-in">{{ i18n.dict()[i18n.language].sign_in_link }}</a>
+  </p>
+</app-auth-shell>

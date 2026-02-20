@@ -1,0 +1,128 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  [style]="{ width: '520px' }"
+  (onHide)="close()">
+  <ng-template pTemplate="header">
+    <div class="dialog-title">{{ i18n.dict()[i18n.language].channels_dialog_title }}</div>
+  </ng-template>
+
+  <form class="dialog-body" [formGroup]="form">
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_type }}</span>
+      <p-dropdown
+        formControlName="channelType"
+        [options]="channelTypeOptions"
+        optionLabel="label"
+        optionValue="value"
+        [style]="{ width: '100%' }"
+        styleClass="full-width"></p-dropdown>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_display }}</span>
+      <input
+        pInputText
+        formControlName="displayName"
+        [placeholder]="i18n.dict()[i18n.language].channels_placeholder_display"
+        class="full-width" />
+      <small *ngIf="form.controls.displayName.touched && form.controls.displayName.invalid" class="error">
+        {{ i18n.dict()[i18n.language].channels_required }}
+      </small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_phone }}</span>
+      <input
+        pInputText
+        formControlName="phoneNumberId"
+        [placeholder]="i18n.dict()[i18n.language].channels_placeholder_phone"
+        class="full-width" />
+      <small class="helper">{{ i18n.dict()[i18n.language].channels_hint_phone }}</small>
+      <small *ngIf="form.controls.phoneNumberId.touched && form.controls.phoneNumberId.invalid" class="error">
+        {{ i18n.dict()[i18n.language].channels_required }}
+      </small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_waba }}</span>
+      <input
+        pInputText
+        formControlName="wabaId"
+        [placeholder]="i18n.dict()[i18n.language].channels_placeholder_waba"
+        class="full-width" />
+      <small class="helper">{{ i18n.dict()[i18n.language].channels_hint_waba }}</small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_token }}</span>
+      <p-password
+        formControlName="accessToken"
+        [feedback]="false"
+        [toggleMask]="true"
+        [style]="{ width: '100%' }"
+        [inputStyle]="{ width: '100%' }"
+        styleClass="full-width"></p-password>
+      <small class="helper">{{ i18n.dict()[i18n.language].channels_hint_token }}</small>
+      <small *ngIf="form.controls.accessToken.touched && form.controls.accessToken.invalid" class="error">
+        {{ i18n.dict()[i18n.language].channels_required }}
+      </small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_verify }}</span>
+      <div class="verify-row">
+        <input
+          pInputText
+          formControlName="verifyToken"
+          [placeholder]="i18n.dict()[i18n.language].channels_placeholder_verify"
+          class="full-width" />
+        <button pButton type="button" class="p-button-outlined generate-btn" (click)="generateVerifyToken()">
+          {{ i18n.dict()[i18n.language].channels_generate }}
+        </button>
+      </div>
+      <small *ngIf="form.controls.verifyToken.touched && form.controls.verifyToken.invalid" class="error">
+        {{ i18n.dict()[i18n.language].channels_required }}
+      </small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_webhook }}</span>
+      <div class="webhook-row">
+        <input pInputText [readonly]="true" [value]="webhookUrl" class="full-width" />
+        <button pButton type="button" class="p-button-text copy-btn" (click)="copyWebhookUrl()">
+          <i class="pi pi-copy"></i>
+        </button>
+      </div>
+      <small class="helper">{{ i18n.dict()[i18n.language].channels_hint_webhook }}</small>
+    </label>
+
+    <label class="field">
+      <span>{{ i18n.dict()[i18n.language].channels_field_fields }}</span>
+      <p-chips
+        [(ngModel)]="webhookFields"
+        [disabled]="true"
+        [style]="{ width: '100%' }"
+        styleClass="full-width"></p-chips>
+    </label>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <div class="dialog-actions">
+      <button pButton type="button" class="p-button-text" (click)="close()">
+        {{ i18n.dict()[i18n.language].channels_cancel }}
+      </button>
+      <button
+        pButton
+        type="button"
+        [disabled]="form.invalid || loading"
+        [loading]="loading"
+        (click)="submit()">
+        {{ i18n.dict()[i18n.language].channels_connect }}
+      </button>
+    </div>
+  </ng-template>
+</p-dialog>
+
+<p-toast></p-toast>

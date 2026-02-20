@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --radius: 0.75rem;
+
+  --background: 210 20% 98%;
+  --foreground: 222.2 47.4% 11.2%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 47.4% 11.2%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 47.4% 11.2%;
+  --primary: 160 84% 39%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 160 40% 92%;
+  --accent-foreground: 160 84% 25%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 160 84% 39%;
+
+  --sidebar-background: 222.2 47.4% 11.2%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 160 84% 39%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217.2 32.6% 17.5%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 217.2 32.6% 20%;
+  --sidebar-ring: 160 84% 39%;
+
+  --emerald: 160 84% 39%;
+  --emerald-light: 160 54% 89%;
+  --emerald-glow: 160 74% 64%;
+}
+
+.dark-theme {
+  --background: 222 28% 12%;
+  --foreground: 210 40% 98%;
+  --card: 222 28% 16%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 28% 16%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 160 84% 39%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 222 22% 18%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 222 22% 20%;
+  --muted-foreground: 215 20% 70%;
+  --accent: 160 40% 22%;
+  --accent-foreground: 160 84% 70%;
+  --destructive: 0 72% 52%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 222 18% 24%;
+  --input: 222 18% 24%;
+  --ring: 160 84% 39%;
+
+  --sidebar-background: 222 28% 10%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 160 84% 39%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 222 22% 18%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 222 18% 24%;
+  --sidebar-ring: 160 84% 39%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: hsl(var(--foreground));
+  background: radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 35%),
+    hsl(var(--background));
+  font-family: "Inter", sans-serif;
+}
+
+.p-inputtext,
+.p-dropdown,
+.p-password input,
+.p-inputtextarea,
+.p-chips .p-chips-multiple-container {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+.p-inputtext::placeholder,
+.p-inputtextarea::placeholder,
+.p-dropdown .p-dropdown-label.p-placeholder,
+.p-password input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.p-inputtext:enabled:focus,
+.p-dropdown:not(.p-disabled).p-focus,
+.p-password input:enabled:focus,
+.p-inputtextarea:enabled:focus {
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+  border-color: hsl(var(--ring));
+}
+
+.p-input-icon-left > i,
+.p-input-icon-right > i {
+  color: hsl(var(--muted-foreground));
+}
+
+.p-dialog .p-dialog-header,
+.p-dialog .p-dialog-content,
+.p-dialog .p-dialog-footer {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+  color: hsl(var(--muted-foreground));
+}
+
+.p-dialog-mask {
+  background: rgba(2, 6, 23, 0.45);
+}
+
+.p-dropdown-panel,
+.p-menu,
+.p-confirm-dialog,
+.p-toast .p-toast-message {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item,
+.p-menu .p-menuitem-link {
+  color: hsl(var(--foreground));
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover,
+.p-menu .p-menuitem-link:not(.p-disabled):hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.p-tag {
+  border: 1px solid hsl(var(--border));
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: hsl(var(--sidebar-background));
+  color: hsl(var(--sidebar-foreground));
+  padding: 20px;
+}
+
+.sidebar a {
+  color: hsl(var(--sidebar-foreground));
+  text-decoration: none;
+}
+
+.main {
+  padding: 24px;
+}
+
+.card {
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  padding: 18px;
+}
+
+.stepper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.step {
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #dbeafe;
+  font-size: 12px;
+}
+
+.step.active {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.chat-bubble {
+  max-width: 72%;
+  margin: 10px 0;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.chat-bubble.agent {
+  background: #d1fae5;
+}
+
+.chat-bubble.customer {
+  background: #e2e8f0;
+}
+
+html[dir='rtl'] .layout {
+  grid-template-columns: 1fr 260px;
+}
+
+html[dir='rtl'] .sidebar {
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}

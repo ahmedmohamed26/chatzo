@@ -1,0 +1,104 @@
+.dashboard {
+  padding: 24px;
+}
+
+.welcome h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+}
+
+.welcome p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: hsl(var(--muted-foreground));
+}
+
+.metric-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.metric-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: hsl(var(--muted-foreground));
+}
+
+.metric-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: hsl(var(--accent));
+  display: grid;
+  place-items: center;
+  color: hsl(var(--emerald));
+}
+
+.metric-card h2 {
+  margin: 14px 0 6px;
+  font-size: 28px;
+}
+
+.metric-card small {
+  color: hsl(var(--muted-foreground));
+}
+
+.recent-card {
+  margin-top: 20px;
+  min-height: 420px;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.recent-card h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.empty-state {
+  min-height: 340px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+}
+
+.empty-state i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.empty-state h4 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.empty-state p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+}

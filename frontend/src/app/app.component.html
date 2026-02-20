@@ -1,0 +1,54 @@
+<ng-container *ngIf="!isAuthRoute; else authLayout">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="brand">
+        <div class="brand-icon"><i class="pi pi-comments"></i></div>
+        <h2>Chatzo</h2>
+      </div>
+
+      <nav class="side-nav">
+        <a
+          *ngFor="let link of sideLinks"
+          [routerLink]="link.disabled ? null : link.route"
+          routerLinkActive="active-link"
+          class="side-link"
+          [class.disabled-link]="link.disabled"
+          [attr.aria-disabled]="link.disabled ? true : null"
+          [attr.tabindex]="link.disabled ? -1 : null">
+          <i [class]="link.icon"></i>
+          <span>{{ i18n.dict()[i18n.language][link.labelKey] }}</span>
+          <span *ngIf="link.soon" class="soon-badge">{{ i18n.dict()[i18n.language].soon }}</span>
+        </a>
+      </nav>
+    </aside>
+
+    <section class="app-content">
+      <header class="app-header">
+        <button pButton type="button" class="p-button-text icon-btn" (click)="toggleDarkMode()">
+          <i class="pi" [class.pi-moon]="!isDark" [class.pi-sun]="isDark"></i>
+        </button>
+        <button pButton type="button" class="p-button-text icon-btn notify-btn">
+          <i class="pi pi-bell"></i>
+          <span class="notify-dot"></span>
+        </button>
+        <button pButton type="button" class="p-button-text user-btn" (click)="userMenu.toggle($event)">
+          <p-avatar label="AM" shape="circle"></p-avatar>
+          <span class="user-meta">
+            <strong>Ahmed Mohamed</strong>
+            <small>Company Admin</small>
+          </span>
+          <i class="pi pi-angle-down"></i>
+        </button>
+        <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
+      </header>
+
+      <main class="page-wrap">
+        <router-outlet></router-outlet>
+      </main>
+    </section>
+  </div>
+</ng-container>
+
+<ng-template #authLayout>
+  <router-outlet></router-outlet>
+</ng-template>

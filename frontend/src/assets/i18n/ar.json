@@ -1,0 +1,148 @@
+{
+  "app_title": "محادثات الذكاء",
+  "tagline": "منصة متعددة المستأجرين لإدارة محادثات واتساب",
+  "nav_dashboard": "لوحة التحكم",
+  "nav_channels": "القنوات",
+  "nav_inbox": "صندوق الوارد",
+  "nav_ai_conversation": "محادثات الذكاء",
+  "nav_quick_replies": "الردود السريعة",
+  "nav_team": "الفريق",
+  "nav_settings": "الإعدادات",
+  "soon": "قريباً",
+  "lang_en": "English",
+  "lang_ar": "العربية",
+  "brand_name": "Chatzo",
+  "auth_hero_title": "كل قنوات المراسلة لديك في صندوق وارد قوي واحد",
+  "auth_hero_subtitle": "اربط واتساب وإنستغرام وماسنجر وتيليجرام. أدر كل المحادثات من لوحة تحكم واحدة.",
+  "sign_in_title": "مرحبًا بعودتك",
+  "sign_in_subtitle": "سجّل الدخول إلى لوحتك",
+  "sign_in_cta": "تسجيل الدخول",
+  "sign_up_title": "إنشاء حساب",
+  "sign_up_subtitle": "ابدأ إدارة محادثاتك",
+  "sign_up_cta": "إنشاء الحساب",
+  "field_email": "البريد الإلكتروني",
+  "field_password": "كلمة المرور",
+  "field_first_name": "الاسم الأول",
+  "field_last_name": "اسم العائلة",
+  "field_org_name": "اسم المؤسسة",
+  "no_account": "ليس لديك حساب؟",
+  "have_account": "لديك حساب بالفعل؟",
+  "sign_up_link": "إنشاء حساب",
+  "sign_in_link": "تسجيل الدخول",
+  "forgot_password": "نسيت كلمة المرور؟",
+  "placeholder_email": "you@company.com",
+  "placeholder_password": "ادخل كلمة المرور",
+  "placeholder_first_name": "الاسم الأول",
+  "placeholder_last_name": "اسم العائلة",
+  "placeholder_org_name": "مثال: Acme Corp",
+  "auth_copyright": "© 2026 Chatzo. جميع الحقوق محفوظة.",
+  "auth_loading": "يرجى الانتظار...",
+  "signin_success": "تم تسجيل الدخول بنجاح.",
+  "signup_success": "تم إنشاء الحساب بنجاح.",
+  "signin_validation_error": "يرجى إدخال البريد وكلمة المرور بشكل صحيح.",
+  "signup_validation_error": "يرجى إكمال جميع الحقول المطلوبة.",
+  "email_required": "البريد الإلكتروني مطلوب.",
+  "email_invalid": "يرجى إدخال بريد إلكتروني صحيح.",
+  "password_required": "كلمة المرور مطلوبة.",
+  "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+  "email_exists": "هذا البريد مستخدم بالفعل.",
+  "auth_error_generic": "فشل تسجيل الدخول. تحقق من البيانات.",
+  "inbox_title": "صندوق الوارد الموحد",
+  "sample_customer": "مرحبًا، أحتاج مساعدة في طلبي.",
+  "sample_agent": "أكيد، سأساعدك في ذلك.",
+  "settings_title": "الإعدادات",
+  "settings_desc": "إدارة اللغة والملف الشخصي والفوترة.",
+  "dashboard_welcome": "مرحباً بعودتك يا أحمد",
+  "dashboard_subtitle": "إليك ما يحدث مع محادثاتك اليوم.",
+  "dashboard_total_conversations": "إجمالي المحادثات",
+  "dashboard_active_agents": "الوكلاء النشطون",
+  "dashboard_pending_messages": "الرسائل المعلقة",
+  "dashboard_response_rate": "معدل الاستجابة",
+  "dashboard_delta_zero": "+0%",
+  "dashboard_online": "متصل",
+  "dashboard_unread": "0 غير مقروء",
+  "dashboard_dash": "—",
+  "dashboard_recent": "المحادثات الأخيرة",
+  "dashboard_empty_title": "لا توجد محادثات بعد",
+  "dashboard_empty_desc": "اربط قناة لبدء استقبال الرسائل",
+  "quick_title": "الردود السريعة",
+  "quick_subtitle": "إدارة قوالب الردود الجاهزة",
+  "quick_new": "رد جديد",
+  "quick_search": "ابحث في الردود السريعة...",
+  "quick_all": "الكل",
+  "quick_loading": "جاري تحميل الردود السريعة...",
+  "quick_empty": "لا توجد ردود سريعة.",
+  "quick_edit": "تعديل الرد",
+  "quick_title_label": "العنوان",
+  "quick_title_required": "العنوان مطلوب.",
+  "quick_category_label": "التصنيف",
+  "quick_content_label": "المحتوى",
+  "quick_content_required": "المحتوى مطلوب.",
+  "quick_cancel": "إلغاء",
+  "quick_add": "إضافة",
+  "quick_save": "حفظ",
+  "quick_delete_header": "حذف الرد السريع",
+  "quick_delete_message": "هل أنت متأكد من حذف \"{title}\"؟",
+  "quick_delete_confirm": "حذف",
+  "quick_deleted_title": "تم الحذف",
+  "quick_deleted_desc": "تم حذف الرد السريع.",
+  "quick_error_title": "خطأ",
+  "quick_delete_error": "فشل حذف الرد السريع.",
+  "quick_cat_general": "عام",
+  "quick_cat_sales": "المبيعات",
+  "quick_cat_support": "الدعم",
+  "quick_cat_follow": "متابعة"
+  ,"channels_title": "القنوات"
+  ,"channels_subtitle": "اربط وأدر قنوات المراسلة الخاصة بك"
+  ,"channels_add": "إضافة قناة"
+  ,"channels_accounts": "حسابات"
+  ,"channels_connect_action": "اتصال"
+  ,"channels_coming_soon": "قريبًا"
+  ,"channels_connected_section": "الحسابات المتصلة"
+  ,"channels_external_id": "المعرف"
+  ,"channels_empty": "لا توجد حسابات متصلة بعد"
+  ,"channels_status_connected": "متصل"
+  ,"channels_status_disconnected": "غير متصل"
+  ,"channels_delete_header": "حذف القناة"
+  ,"channels_delete_message": "هل أنت متأكد من حذف \"{name}\"؟"
+  ,"channels_delete_confirm": "حذف"
+  ,"channels_deleted_title": "تم الحذف"
+  ,"channels_deleted_desc": "تمت إزالة القناة."
+  ,"channels_error_title": "خطأ"
+  ,"channels_load_error": "فشل تحميل القنوات."
+  ,"channels_delete_error": "فشل حذف القناة."
+  ,"channels_dialog_title": "ربط قناة واتساب"
+  ,"channels_field_type": "نوع القناة"
+  ,"channels_field_display": "اسم العرض"
+  ,"channels_field_phone": "معرّف رقم الهاتف"
+  ,"channels_field_waba": "معرّف حساب واتساب للأعمال (اختياري)"
+  ,"channels_field_token": "رمز الوصول الدائم"
+  ,"channels_field_verify": "رمز التحقق"
+  ,"channels_field_webhook": "رابط Webhook (الصقه في لوحة Meta)"
+  ,"channels_field_fields": "حقول Webhook"
+  ,"channels_placeholder_display": "مثال: واتساب الشركة الرئيسي"
+  ,"channels_placeholder_phone": "من لوحة مطوري Meta ← واتساب ← إعدادات API"
+  ,"channels_placeholder_waba": "من WhatsApp Manager / إعدادات الأعمال في Meta"
+  ,"channels_placeholder_verify": "اضغط توليد أو أدخل رمزًا"
+  ,"channels_hint_phone": "يوجد في لوحة مطوري Meta تحت واتساب ← إعدادات API."
+  ,"channels_hint_waba": "موصى به لظهور أفضل في Meta."
+  ,"channels_hint_token": "يُنشأ من إعدادات أعمال Meta ← مستخدمو النظام."
+  ,"channels_hint_webhook": "الصق هذا الرابط في لوحة Meta ← واتساب ← الإعدادات ← Webhooks واشترك في \"messages\"."
+  ,"channels_required": "هذا الحقل مطلوب."
+  ,"channels_generate": "توليد"
+  ,"channels_connect": "ربط القناة"
+  ,"channels_cancel": "إلغاء"
+  ,"channels_copied_title": "تم النسخ"
+  ,"channels_copied_desc": "تم نسخ رابط Webhook."
+  ,"channels_connected_title": "تم الربط"
+  ,"channels_connected_desc": "تم ربط قناة واتساب."
+  ,"channels_connect_error": "فشل ربط قناة واتساب."
+  ,"channels_whatsapp": "واتساب"
+  ,"channels_instagram": "إنستغرام"
+  ,"channels_messenger": "ماسنجر"
+  ,"channels_telegram": "تيليجرام"
+  ,"channels_desc_whatsapp": "الاتصال عبر WhatsApp Cloud API"
+  ,"channels_desc_instagram": "الاتصال عبر Meta Graph API"
+  ,"channels_desc_messenger": "الاتصال عبر Meta Graph API"
+  ,"channels_desc_telegram": "الاتصال عبر Telegram Bot API"
+}

@@ -1,0 +1,127 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<section class="quick-page">
+  <header class="quick-header">
+    <div>
+      <h1>{{ i18n.dict()[i18n.language].quick_title }}</h1>
+      <p>{{ i18n.dict()[i18n.language].quick_subtitle }}</p>
+    </div>
+    <button
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      [label]="i18n.dict()[i18n.language].quick_new"
+      class="new-btn"
+      (click)="openCreateDialog()">
+    </button>
+  </header>
+
+  <div class="quick-controls">
+    <span class="p-input-icon-left search">
+      <i class="pi pi-search"></i>
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="search"
+        [placeholder]="i18n.dict()[i18n.language].quick_search"
+        class="search-input" />
+    </span>
+
+    <div class="filters">
+      <button
+        pButton
+        type="button"
+        [class.active-chip]="selectedCategory === 'all'"
+        class="p-button-text chip"
+        (click)="selectedCategory = 'all'">
+        {{ i18n.dict()[i18n.language].quick_all }}
+      </button>
+
+      <button
+        *ngFor="let cat of categories"
+        pButton
+        type="button"
+        [class.active-chip]="selectedCategory === cat.value"
+        class="p-button-text chip"
+        (click)="selectedCategory = cat.value">
+        {{ i18n.dict()[i18n.language][cat.labelKey] }}
+      </button>
+    </div>
+  </div>
+
+  <div class="reply-list">
+    <div class="empty" *ngIf="loading">
+      <i class="pi pi-spin pi-spinner"></i>
+      <p>{{ i18n.dict()[i18n.language].quick_loading }}</p>
+    </div>
+
+    <article class="reply-card" *ngFor="let item of filteredReplies">
+      <div class="left">
+        <div class="title-row">
+          <h3>{{ item.title }}</h3>
+          <span class="badge">{{ item.category }}</span>
+        </div>
+        <p>{{ item.content }}</p>
+      </div>
+      <div class="actions">
+        <button pButton type="button" class="p-button-text p-button-rounded" icon="pi pi-pencil" (click)="openEditDialog(item)"></button>
+        <button pButton type="button" class="p-button-text p-button-rounded p-button-danger" icon="pi pi-trash" (click)="confirmDelete(item)"></button>
+      </div>
+    </article>
+
+    <div class="empty" *ngIf="!loading && filteredReplies.length === 0">
+      <i class="pi pi-comments"></i>
+      <p>{{ i18n.dict()[i18n.language].quick_empty }}</p>
+    </div>
+  </div>
+</section>
+
+<p-dialog
+  [(visible)]="dialogVisible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '540px' }"
+  [header]="isEditMode ? i18n.dict()[i18n.language].quick_edit : i18n.dict()[i18n.language].quick_new">
+  <form [formGroup]="form" class="dialog-form">
+    <label>{{ i18n.dict()[i18n.language].quick_title_label }}</label>
+    <input pInputText formControlName="title" />
+    <small class="field-error" *ngIf="form.controls.title.touched && form.controls.title.invalid">
+      {{ i18n.dict()[i18n.language].quick_title_required }}
+    </small>
+
+    <label>{{ i18n.dict()[i18n.language].quick_category_label }}</label>
+    <p-dropdown
+      [options]="categoryOptions"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="category"
+      [style]="{ width: '100%' }"
+      styleClass="full-width"
+      appendTo="body">
+    </p-dropdown>
+
+    <label>{{ i18n.dict()[i18n.language].quick_content_label }}</label>
+    <textarea pInputTextarea rows="4" formControlName="content"></textarea>
+    <small class="field-error" *ngIf="form.controls.content.touched && form.controls.content.invalid">
+      {{ i18n.dict()[i18n.language].quick_content_required }}
+    </small>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      type="button"
+      class="p-button-text"
+      [label]="i18n.dict()[i18n.language].quick_cancel"
+      (click)="dialogVisible = false">
+    </button>
+    <button
+      pButton
+      type="button"
+      [label]="isEditMode ? i18n.dict()[i18n.language].quick_save : i18n.dict()[i18n.language].quick_add"
+      (click)="saveReply()">
+    </button>
+  </ng-template>
+</p-dialog>
